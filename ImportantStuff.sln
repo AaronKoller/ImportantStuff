@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerService.CLI.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{7A593A3D-8E8E-4B9C-AA36-64A2437ACF93}"
 	ProjectSection(SolutionItems) = preProject
-		WorkerService\Documentation\Testing.pptx = WorkerService\Documentation\Testing.pptx
+		Documentation\Testing.pptx = Documentation\Testing.pptx
 	EndProjectSection
 EndProject
 Global
