@@ -1,0 +1,21 @@
+parameters:
+  - name: ComponentName
+    type: string
+
+resources:
+  repositories:
+    - repository: templates
+      name: Repo_Template_Name
+      type: git
+      ref: master
+
+variables:
+  System.Debug: true
+  System.Diagnostic: true
+  VariableComponentName: ${{ parameters['ComponentName'] }}
+
+stages:
+  - template: stages/test.yaml  #templates is the same name from templates in the resources
+    parameters:
+      TemplateComponentName: $(VariableComponentName)
+      StageName: 'Test'

@@ -1,0 +1,142 @@
+parameters:
+# Stage Params
+- name: componentName # Required param
+  type: string
+- name: stageName
+  type: string
+  default: 'tests'
+- name: stageCondition
+  type: string
+  default: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+- name: stageDependsOn
+  type: object
+  default: []
+- name: buildConfiguration # for doNet build and test --configuration param in all vstest jobs
+  type: string
+  default: 'Debug'
+- name: buildOutput # for dotNet build --output param in all vstest jobs
+  type: string
+  default: '$(Pipeline.Workspace)/Build'
+- name: rerunMaxAttempts # Default for all vstest jobs
+  type: number
+  default: 2
+- name: continueOnError # Default for all vstest jobs
+  type: boolean
+  default: false
+- name: dotNetFeed
+  type: string
+  default: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
+- name: jobContainer
+  type: object
+  default: ''
+- name: variables
+  type: object
+  default: ''
+
+# Test Job1 Params
+- name: pool # Optional param to override the default pool
+  type: object
+  default:
+    name: 'Azure Pipelines'
+    vmImage: 'windows-2019'
+- name: parallelStrategy # Run test cases in parallel across multiple jobs 
+  type: number
+  default: 1
+- name: runInParallel # Run test cases in parallel
+  type: boolean
+  default: true
+- name: dependsOn # Optional param to order test execution
+  type: object
+  default: []
+- name: artifactName # buildProjects or artifactName required to enable Job1
+  type: string
+  default: ''
+- name: checkout
+  type: string
+  default: self
+- name: buildProjects # buildProjects or artifactName required to enable Job1
+  type: string
+  default: ''
+- name: buildArguments # Default arguments in addition to --configuration and --output
+  type: string
+  default: '--no-restore'
+- name: testPlan # Required param to enable Job1
+  type: number
+  default: 0
+- name: testSuite # Required param to enable Job1
+  type: number
+  default: 0
+- name: testConfig # Required param to enable Job1
+  type: number
+  default: 0
+- name: testTitle # Default Title
+  type: string
+  default: 'Test Job 1'
+- name: keyVault-subscription # Optional param to enable keyVault in Job1
+  type: string
+  default: ''
+- name: keyVault-name # Optional param to enable keyVault in Job1
+  type: string
+  default: ''
+- name: replaceTokensRoot # Optional param to enable replaceTokens task in Job1
+  type: string
+  default: '$(Pipeline.Workspace)'
+- name: replaceTokensTargets # Optional param to enable replaceTokens task in Job1
+  type: string
+  default: ''
+- name: preSteps
+  type: stepList
+  default: []
+- name: postSteps
+  type: stepList
+  default: []
+
+stages:
+- stage: ${{ parameters['stageName'] }}
+  condition: ${{ parameters['stageCondition'] }}
+  dependsOn: ${{ parameters['stageDependsOn'] }}
+  ${{ if parameters.variables }}:
+    variables: ${{ parameters.variables }}
+  jobs:
+  - ${{ if and(or(parameters['buildProjects'], parameters['artifactName']), ne(parameters['testPlan'], 0), ne(parameters['testSuite'], 0), ne(parameters['testConfig'], 0)) }}:
+    - template: jobs/test/visualStudio.yaml
+      parameters:
+        job: job1
+        displayName: ${{ parameters['testTitle'] }}
+        container: ${{ parameters['jobContainer'] }}
+        dependsOn: ${{ parameters['dependsOn'] }}
+        checkout: ${{ parameters['checkout'] }}
+        pool: ${{ parameters['pool'] }}
+        preSteps: ${{ parameters['preSteps'] }}
+        postSteps: ${{ parameters['postSteps'] }}
+        parallelStrategy: ${{ parameters['parallelStrategy'] }}
+        runInParallel: ${{ parameters['runInParallel'] }}
+        dotNetProjects: ${{ parameters['buildProjects'] }}
+        dotNetFeed: ${{ parameters['dotNetFeed'] }}
+        dotNetBuildArguments: "${{ parameters['buildArguments'] }} --configuration ${{ parameters['buildConfiguration'] }} --output ${{ parameters['buildOutput'] }}"
+        artifactName: ${{ parameters['artifactName'] }}
+        ${{ if not(parameters['replaceTokensTargets']) }}:
+          replaceTokensEnabled: false
+        ${{ if parameters['replaceTokensTargets'] }}:
+          replaceTokensEnabled: true
+          replaceTokensRoot: ${{ parameters['replaceTokensRoot'] }}
+          replaceTokensTargets: ${{ parameters['replaceTokensTargets'] }}
+        testSelector: testPlan
+        testPlan: ${{ parameters['testPlan'] }}
+        testSuite: ${{ parameters['testSuite'] }}
+        testConfiguration: ${{ parameters['testConfig'] }}
+        testRunTitle: ${{ parameters['testTitle'] }}
+        configuration: ${{ parameters['buildConfiguration'] }}
+        ${{ if gt(parameters['rerunMaxAttempts'], 0) }}:
+          rerunFailedTests: true
+        ${{ if eq(parameters['rerunMaxAttempts'], 0) }}:
+          rerunFailedTests: false
+        rerunMaxAttempts: ${{ parameters['rerunMaxAttempts'] }}
+        continueOnError: ${{ parameters['continueOnError'] }}
+        ${{ if and(parameters['keyVault-subscription'], parameters['keyVault-name']) }}:
+          keyVaultEnabled: true
+          keyVaultSubscription: ${{ parameters['keyVault-subscription'] }}
+          keyVaultName: ${{ parameters['keyVault-name'] }}
+        ${{ if not(and(parameters['keyVault-subscription'], parameters['keyVault-name'])) }}:
+          keyVaultEnabled: false
+        condition: succeeded()

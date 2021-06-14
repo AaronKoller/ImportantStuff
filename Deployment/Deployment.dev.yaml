@@ -1,0 +1,17 @@
+name: '$(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:r)'
+
+pool: 
+  name: Pool-Name
+
+trigger:
+  branches:
+    include: 
+      - master
+  paths:
+    include:
+    - APITests
+
+extends:
+  template: "Service.Deployment.dev1.yaml"
+  parameters:
+    ComponentName: 'TestServiceName'

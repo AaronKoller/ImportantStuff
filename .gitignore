@@ -361,3 +361,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ncrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# nCrunchTemp_*
+# *.ncrunchsolution
+# *.ncrunchproject
+# *.ncrunch*.user
+# _NCrunch_*
+# *.crunch.xml
+# nCrunchTemp_*
