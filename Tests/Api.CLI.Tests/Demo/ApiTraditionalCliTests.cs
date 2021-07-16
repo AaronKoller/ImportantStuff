@@ -8,7 +8,6 @@ using Api.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -21,21 +20,7 @@ namespace Api.CLI.Tests.Demo
 {
     public class ApiTraditionalCliTests
     {
-        private ServiceCollection serviceCollection;
-        private AppSettings appSettings;
         private readonly XUnitLogger _logger;
-        private IConfigurationRoot _configuration;
-        private HttpClient _httpClient;
-        private string message;
-        private HttpResponseMessage _httpResponse;
-        private string _capturedResponse;
-        private LogLevel _capturedLogLevel;
-        private EventId _capturedEventId;
-        private object _capturedState;
-        private Exception _capturedException;
-
-        private WeatherForecast _weatherForecast;
-
 
         public ApiTraditionalCliTests(ITestOutputHelper output)
         {
@@ -47,9 +32,8 @@ namespace Api.CLI.Tests.Demo
             //Arrange
             var loggerMock = new Mock<ILogger<WeatherForecastController>>();
 
-            message = "test";
-            serviceCollection = new ServiceCollection();
-            appSettings = new AppSettings
+            var message = "test";
+            var appSettings = new AppSettings
             {
                 AnotherChildAppSetting = new AnotherChildAppSetting { AnotherChildProperty = "-AnotherChildProperty-" },
                 ChildAppSetting = new ChildAppSetting { ThisIsAProperty = "-ThisIsAProperty-" }
@@ -85,9 +69,8 @@ namespace Api.CLI.Tests.Demo
                 TemperatureC = 60
             };
 
-            message = JsonConvert.SerializeObject(weatherForecast);
-            serviceCollection = new ServiceCollection();
-            appSettings = new AppSettings
+            var message = JsonConvert.SerializeObject(weatherForecast);
+            var appSettings = new AppSettings
             {
                 AnotherChildAppSetting = new AnotherChildAppSetting { AnotherChildProperty = "-AnotherChildProperty-" },
                 ChildAppSetting = new ChildAppSetting { ThisIsAProperty = "-ThisIsAProperty-" }
