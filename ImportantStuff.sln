@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Kestrel.CLI.Tests", "Tests\Api.Kestrel.CLI.Tests\Api.Kestrel.CLI.Tests.csproj", "{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructorChainingInjection", "ConstructorChainingInjection\ConstructorChainingInjection.csproj", "{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +67,10 @@ Global
 		{15826B26-8DCA-47E9-8FBD-64714BE88034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15826B26-8DCA-47E9-8FBD-64714BE88034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15826B26-8DCA-47E9-8FBD-64714BE88034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
