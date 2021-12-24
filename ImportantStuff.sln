@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\Testing.pptx = Documentation\Testing.pptx
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Kestrel.CLI.Tests", "Api.Kestrel.CLI.Tests\Api.Kestrel.CLI.Tests.csproj", "{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Kestrel.CLI.Tests", "Tests\Api.Kestrel.CLI.Tests\Api.Kestrel.CLI.Tests.csproj", "{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
