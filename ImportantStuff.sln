@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2AAEAA5A-A531-4711-A31A-5B7036F6B727}"
 EndProject
@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructorChainingInjection", "ConstructorChainingInjection\ConstructorChainingInjection.csproj", "{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Kestrel.CLI.Tests", "Api.Kestrel.CLI.Tests\Api.Kestrel.CLI.Tests.csproj", "{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +71,10 @@ Global
 		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C35D09EA-6EED-49CA-BC0A-C1549AA69FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +85,7 @@ Global
 		{996221ED-268A-4A04-8782-A2CC21C73109} = {2AAEAA5A-A531-4711-A31A-5B7036F6B727}
 		{464A7FC7-E32A-4630-87CD-1597BCD7246F} = {2AAEAA5A-A531-4711-A31A-5B7036F6B727}
 		{15826B26-8DCA-47E9-8FBD-64714BE88034} = {2AAEAA5A-A531-4711-A31A-5B7036F6B727}
+		{1F78F442-8FE9-4A4F-8EB9-19BA8E6E89CE} = {2AAEAA5A-A531-4711-A31A-5B7036F6B727}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B69A16BD-1EAB-445C-84D9-E9931B81B3C9}
